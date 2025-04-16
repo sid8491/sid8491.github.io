@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Siddharth Shukla</title>
-		<!-- link to main stylesheet -->
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Siddharth Shukla!</h1>
-				<p>I'm software develeoper with some xperience in Python, Machine Learning, NLP and Chatbots.
-        <a href="/about">Read more about my life...</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="mailto:sid.8491@gmail.com">email</a></li>
-        		<li><a href="https://github.com/sid8491">github.com/sid8491</a></li>
-			</ul>
-		</footer>
-	</body>
+<head>
+    <title>My Custom Form</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseMessage"></div> <script>
+        const form = document.getElementById('myForm');
+        const responseMessage = document.getElementById('responseMessage');
+        // *** PASTE YOUR WEB APP URL HERE ***
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby93os6oF9KCkP4uFmxDDXerGWGJ6M2JpnBG2xRYD2rnygycmXWdVss87qHvdvoiTlSoA/exec';
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Prevent default form submit
+            responseMessage.textContent = 'Sending...'; // Provide feedback
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => response.json()) // Expect JSON response from Apps Script
+                .then(data => {
+                    console.log('Success:', data);
+                    if (data.result === 'success') {
+                        responseMessage.textContent = 'Thanks for your submission!';
+                        form.reset(); // Clear the form
+                    } else {
+                        responseMessage.textContent = 'Error: Could not submit form. ' + (data.error || '');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    responseMessage.textContent = 'Error submitting form: ' + error.message;
+                });
+        });
+    </script>
+</body>
 </html>
