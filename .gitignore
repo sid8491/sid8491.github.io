@@ -1,0 +1,10 @@
+# Local-only working material (résumé, data notes, source docs)
+reference/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Tooling artifacts
+.playwright-mcp/

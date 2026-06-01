@@ -1,47 +1,305 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="light">
 <head>
-    <title>My Custom Form</title>
-    <link rel="stylesheet" href="style.css"> </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddharth Shukla — GenAI & Agentic AI Engineer</title>
+  <meta name="description" content="Portfolio of Siddharth Shukla — Data Science Lead building production GenAI, Agentic AI, NLP, and Computer Vision systems. Creator of Agentic Town, html-feedback, and Marky." />
+  <meta name="author" content="Siddharth Shukla" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Siddharth Shukla — GenAI & Agentic AI Engineer" />
+  <meta property="og:description" content="Building production GenAI, Agentic AI, NLP, and Computer Vision systems." />
+  <meta property="og:url" content="https://sid8491.github.io/" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231b3a5c'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-size='52' font-weight='bold' fill='white' text-anchor='middle'%3ESS%3C/text%3E%3C/svg%3E" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+  <!-- Prevent dark-mode flash: apply saved theme before paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
 <body>
-    <form id="myForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Siddharth <span>Shukla</span></div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#selected">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea><br><br>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="available"><span class="dot"></span> Open to GenAI / AI leadership conversations</div>
+      <h1>I build <span class="grad">agentic&nbsp;AI</span><br />that ships to production.</h1>
+      <div class="role">Data Science Lead · GenAI &amp; Agentic AI</div>
+      <p class="blurb">
+        I design and lead teams that turn large language models into real products —
+        agentic RAG assistants, LLM fine-tuning pipelines, and computer-vision systems.
+        8+ years deep in Data Science, NLP, and Computer Vision, and I still love to build
+        with my own hands.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#work">View my work</a>
+        <a class="btn" href="mailto:sid.8491@gmail.com">✉ Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/sid8491" target="_blank" rel="noopener">in LinkedIn</a>
+        <a class="btn" href="https://github.com/sid8491" target="_blank" rel="noopener">⌥ GitHub</a>
+      </div>
 
-        <button type="submit">Submit</button>
-    </form>
+      <div class="focus-row">
+        <span class="focus-chip"><b>Agentic AI</b> · LangGraph · multi-agent</span>
+        <span class="focus-chip"><b>GenAI</b> · RAG · fine-tuning</span>
+        <span class="focus-chip"><b>Computer Vision</b> · YOLO v8</span>
+        <span class="focus-chip"><b>MLOps</b> · AWS · FastAPI</span>
+      </div>
+    </div>
+  </header>
 
-    <div id="responseMessage"></div> <script>
-        const form = document.getElementById('myForm');
-        const responseMessage = document.getElementById('responseMessage');
-        // *** PASTE YOUR WEB APP URL HERE ***
-        const scriptURL = 'https://script.google.com/macros/s/AKfycby93os6oF9KCkP4uFmxDDXerGWGJ6M2JpnBG2xRYD2rnygycmXWdVss87qHvdvoiTlSoA/exec';
+  <!-- ===================== ABOUT (one line) ===================== -->
+  <section id="about">
+    <div class="wrap reveal">
+      <div class="eyebrow">About</div>
+      <p class="about-line">
+        I'm a Data Science Lead in Gurgaon who's spent the last 8+ years taking AI from
+        <strong>idea to production</strong> — owning data strategy, architecture, deployment,
+        and the team. I care about <strong>clean engineering</strong>, pragmatic system design,
+        and building things people actually use.
+      </p>
+    </div>
+  </section>
 
-        form.addEventListener('submit', e => {
-            e.preventDefault(); // Prevent default form submit
-            responseMessage.textContent = 'Sending...'; // Provide feedback
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => response.json()) // Expect JSON response from Apps Script
-                .then(data => {
-                    console.log('Success:', data);
-                    if (data.result === 'success') {
-                        responseMessage.textContent = 'Thanks for your submission!';
-                        form.reset(); // Clear the form
-                    } else {
-                        responseMessage.textContent = 'Error: Could not submit form. ' + (data.error || '');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    responseMessage.textContent = 'Error submitting form: ' + error.message;
-                });
+  <!-- ===================== OPEN SOURCE WORK (centerpiece) ===================== -->
+  <section id="work" style="background:var(--bg-alt);">
+    <div class="wrap reveal">
+      <div class="eyebrow">Things I've built</div>
+      <h2 class="section-title">Open-source &amp; personal projects</h2>
+      <p class="section-sub">Side projects I designed and shipped end-to-end — all open source, live, and documented.</p>
+
+      <div class="proj-grid">
+
+        <div class="proj-card">
+          <div class="proj-top"><span class="proj-index">01</span><span class="pill">Live</span></div>
+          <h3>Agentic Town</h3>
+          <div class="stack">Multi-Agent Simulation · Python · LLMs · Ollama / Gemini</div>
+          <p>
+            An autonomous multi-agent simulation set in modern Gurgaon. Ten AI characters with
+            distinct personalities live, work, and interact entirely on their own — each powered by
+            an LLM, reading its own "soul file", keeping a private diary, forming opinions, and
+            making decisions based on hunger, energy, mood, and goals. No player control — just
+            watch the drama unfold.
+          </p>
+          <div class="proj-links">
+            <a href="https://sid8491.github.io/agentic-town/" target="_blank" rel="noopener">↗ Live site</a>
+            <a href="https://github.com/sid8491/agentic-town" target="_blank" rel="noopener">⌥ Code</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-top"><span class="proj-index">02</span><span class="pill">Tool</span></div>
+          <h3>html-feedback</h3>
+          <div class="stack">Claude Code Plugin · Python · stdlib-only</div>
+          <p>
+            A plugin that turns any folder of HTML into a Figma-style review canvas. Highlight text,
+            click elements, leave comments, hit ▶ Process — Claude edits the source HTML, the page
+            reloads with the changes highlighted, and you revert anything you don't like with one
+            click. A fast, visual, reversible review loop that stays in the browser.
+          </p>
+          <div class="proj-links">
+            <a href="https://sid8491.github.io/html-feedback/" target="_blank" rel="noopener">↗ Live site</a>
+            <a href="https://github.com/sid8491/html-feedback" target="_blank" rel="noopener">⌥ Code</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-top"><span class="proj-index">03</span><span class="pill">App</span></div>
+          <h3>Marky</h3>
+          <div class="stack">Electron · TypeScript · React · AI-native</div>
+          <p>
+            A beautiful cross-platform Markdown editor with first-class AI assistance and
+            pixel-perfect PDF export. Multi-tab editing, side-by-side preview, a full formatting
+            toolbar, on-demand AI continuation and refine tools over Anthropic / OpenAI / Google /
+            Ollama, and OS-keychain-encrypted key storage. Privacy-first and polished.
+          </p>
+          <div class="proj-links">
+            <a href="https://sid8491.github.io/marky/" target="_blank" rel="noopener">↗ Live site</a>
+            <a href="https://github.com/sid8491/marky" target="_blank" rel="noopener">⌥ Code</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELECTED PROFESSIONAL WORK ===================== -->
+  <section id="selected">
+    <div class="wrap reveal">
+      <div class="eyebrow">In production</div>
+      <h2 class="section-title">Selected professional work</h2>
+      <p class="section-sub">Flagship AI systems I've architected and led with my team. Details generalised to respect confidentiality.</p>
+
+      <div class="work-grid">
+        <div class="work-card">
+          <h3>Agentic RAG Sales Assistant</h3>
+          <div class="stack">LangChain · LangGraph · FastAPI · ChromaDB · Redis</div>
+          <p>
+            A multi-agent assistant that gives sales agents real-time answers from product knowledge
+            bases — retrieval, reasoning, and response in one pipeline, deployed across retail and
+            telesales channels.
+          </p>
+        </div>
+
+        <div class="work-card">
+          <h3>Conversational AI Platform</h3>
+          <div class="stack">LangGraph · Azure OpenAI · RAG · Multi-Agent</div>
+          <p>
+            A supervisor-based multi-agent chatbot replacing a legacy intent system — handling sales,
+            claims, renewals, and service requests with guardrails, and voice support in a later
+            phase.
+          </p>
+        </div>
+
+        <div class="work-card">
+          <h3>Video Fraud Detection</h3>
+          <div class="stack">YOLO v8 · PyTorch · AWS Lambda · SQS</div>
+          <p>
+            A serverless computer-vision pipeline that detects mobile-device defects (screen, back,
+            sides) from video using YOLO v8 and LLM-based OCR, built for customer onboarding.
+          </p>
+        </div>
+
+        <div class="work-card">
+          <h3>LLM Fine-Tuning Pipeline</h3>
+          <div class="stack">QLoRA · SFT · CPT · Unsloth · Python</div>
+          <p>
+            A multi-stage data-preparation pipeline feeding a domain-specific LLM, fine-tuned with
+            QLoRA 4-bit quantisation using SFT and CPT techniques.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills" style="background:var(--bg-alt);">
+    <div class="wrap reveal">
+      <div class="eyebrow">Toolkit</div>
+      <h2 class="section-title">Skills &amp; technologies</h2>
+      <p class="section-sub">What I reach for, organised by area.</p>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h3>GenAI / LLM</h3>
+          <div class="tags">
+            <span class="tag">LangChain</span><span class="tag">LangGraph</span>
+            <span class="tag">Agentic RAG</span><span class="tag">Google ADK</span>
+            <span class="tag">Prompt Engineering</span><span class="tag">QLoRA</span>
+            <span class="tag">SFT</span><span class="tag">CPT</span>
+            <span class="tag">ChromaDB</span><span class="tag">Vector DBs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>ML / Computer Vision</h3>
+          <div class="tags">
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span>
+            <span class="tag">YOLO v8</span><span class="tag">BERT / Transformers</span>
+            <span class="tag">Scikit-learn</span><span class="tag">NLP</span>
+            <span class="tag">Object Detection</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Cloud &amp; MLOps</h3>
+          <div class="tags">
+            <span class="tag">AWS Lambda</span><span class="tag">SageMaker</span>
+            <span class="tag">S3</span><span class="tag">SQS</span><span class="tag">EC2</span>
+            <span class="tag">FastAPI</span><span class="tag">Docker</span>
+            <span class="tag">GitLab CI</span><span class="tag">Redis</span><span class="tag">Kafka</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span>
+            <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">React</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <div class="eyebrow">Get in touch</div>
+      <h2 class="section-title">Let's build something.</h2>
+      <p>
+        Open to interesting conversations around GenAI, Agentic AI, and building AI teams.
+        The fastest way to reach me is email — or connect on LinkedIn.
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:sid.8491@gmail.com">✉ sid.8491@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/sid8491" target="_blank" rel="noopener">in LinkedIn</a>
+        <a class="btn" href="https://github.com/sid8491" target="_blank" rel="noopener">⌥ GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      © <span id="year">2026</span> Siddharth Shukla · Gurgaon, India
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Theme toggle ----------
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('themeToggle');
+      function sync() {
+        var dark = root.getAttribute('data-theme') === 'dark';
+        btn.textContent = dark ? '☀️' : '🌙';
+        btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      sync();
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        sync();
+      });
+    })();
+
+    // ---------- Reveal on scroll ----------
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (e) { e.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
         });
-    </script>
+      }, { threshold: 0.1 });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+
+    // ---------- Footer year ----------
+    try { document.getElementById('year').textContent = new Date().getFullYear(); } catch (e) {}
+  </script>
 </body>
 </html>
